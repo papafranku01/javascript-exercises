@@ -1,12 +1,14 @@
 const removeFromArray = function(arr, ...a) {
     let arrayCount = {};
-    let merged = arr.concat(a);
-    
+    const itemBasis = typeof arr[0];
+    const validItems = a.filter(items => typeof item === itemBasis);
+    let merged = arr.concat(validItems);
+
     for(const item of merged) {
-        arrayCount[item] = (arrayCount[item] || 0) + 1;
+        arrayCount[item] = (arrayCount[item] || 0) + 1; // count duplicates
     }
     
-    let arrayMerged = merged.filter(item => arrayCount[item] === 1);
+    let arrayMerged = merged.filter(item => arrayCount[item] === 1); // if duplicate is found, filter all instances duplicated value
     
     return arrayMerged;
 };
@@ -14,10 +16,11 @@ const removeFromArray = function(arr, ...a) {
 
 /* 
 
-1. Merge array and items to be removed
-2. Match similar items 
-3. Remove similar items
-4. Return to array
+1. Merge paramaters and check for non same-type values 
+2. Filter non same-type values
+2. Check how many duplicates
+3. Filter similar items
+4. Merge to array
 
 */
 
